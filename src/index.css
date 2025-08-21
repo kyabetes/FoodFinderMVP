@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --grad-start: #f3e7ff; /* pastel purple */
+  --grad-mid: #d1f7ff;   /* pastel blue */
+  --grad-end: #ffe6e6;  /* pastel pink */
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: radial-gradient(1200px 800px at 10% 10%, rgba(217,201,255,0.45), transparent),
+              radial-gradient(1200px 800px at 90% 20%, rgba(205,232,255,0.45), transparent),
+              radial-gradient(1000px 700px at 40% 90%, rgba(255,209,220,0.45), transparent),
+              linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.title-playful {
+  font-family: 'Quicksand', 'Plus Jakarta Sans', ui-sans-serif, system-ui;
+}
+
+/* Utility for gradient pill */
+.gradient-pill {
+  background: linear-gradient(135deg, var(--grad-start), var(--grad-mid), var(--grad-end));
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06), 0 8px 40px rgba(217,201,255,0.25);
+}
+
+/* Glassy gradient outlined title words */
+.glassy-gradient-text {
+  background: linear-gradient(135deg, var(--grad-start), var(--grad-mid), var(--grad-end));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 0 #000,
+               0 0 15px rgba(217,201,255,0.35),
+               0 0 25px rgba(205,232,255,0.35);
+  position: relative;
+}
+.glassy-gradient-text::after {
+  /* creates a subtle black outline via text-shadow trick */
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+/* Hover wobble + float */
+@keyframes wobble {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-2px) rotate(-1deg); }
+  50% { transform: translateY(1px) rotate(1deg); }
+  75% { transform: translateY(-1px) rotate(0.5deg); }
+}
+.floaty-word {
+  display: inline-block;
+  transition: transform 200ms ease, text-shadow 200ms ease;
+  cursor: default;
+}
+.floaty-word:hover {
+  animation: wobble 400ms ease-in-out both;
+  text-shadow: 0 6px 20px rgba(0,0,0,0.06), 0 8px 40px rgba(217,201,255,0.45);
+}
+
+.no-wobble:hover {
+  animation: none;
+  text-shadow: 0 0 0 rgba(0,0,0,0),
+               0 0 35px rgba(217,201,255,0.65),
+               0 0 55px rgba(205,232,255,0.65);
+}
+
+/* Small motion utility */
+.hover-float {
+  transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hover-float:hover { transform: translateY(-2px); }
