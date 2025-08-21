@@ -1,4 +1,7 @@
 # FoodFinderMVP
+
+VERCEL LINK: https://foodfinderproofofconcept.vercel.app/
+
 A proof-of-concept for a college campus food finder! :)
 
 - Single-page React app
